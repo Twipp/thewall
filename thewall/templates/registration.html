@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Registration</title>
+    <link rel="stylesheet" type ='text/css' href="{{url_for('static', filename='regStyle.css')}}">
+  </head>
+  <body>
+    <div id ="wrapper">
+      <div id = "regContainer">
+        <h1>Registration</h1>
+        <form action = '/submit' method = 'POST'>
+          <p>First Name:  </span><input type="text" id= "firstName" name = "firstName"></p>
+          <p>Last Name:  </span><input type="text" id= "lastName" name = "lastName"></p>
+          <p>Email: </span><input type="text" id= "email" name = "email"></p>
+          <p><span>Password:  </span><input type="text" id= "password" name = "password">
+          <span>Confirm Password:  </span><input type="text" id= "confirmPass" name = "confirmPass"></p>
+          <input type="submit" id = "addButton" value = "Register!">
+        </form>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div id = "flashMessage"><p>{{message}}</p></div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+      </div>
+    </div>
+  </body>
+</html>

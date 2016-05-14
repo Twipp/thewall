@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Success!!!</title>
+    <link rel="stylesheet" type ='text/css' href="{{url_for('static', filename='regStyle.css')}}">
+  </head>
+  <body>
+    <div id = "wrapper">
+      <div id = "regContainer">
+        <h1>You are now registered on the Wall!</h1>
+        <p>{{session ['newFirstName']}} {{session ['newLastName']}}</p>
+        <p>{{session ['newEmail']}}</p>
+
+        <form action = '/' method = 'GET'>
+          <button type="submit" id = "addButton">To Home</button>
+          <!-- <input type = "submit"> -->
+        </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

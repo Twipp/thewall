@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>The Wall</title>
+    <link rel="stylesheet" type ='text/css' href="{{url_for('static', filename='style.css')}}">
+  </head>
+  <body>
+    <div id = "wrapper">
+      <div id = "banner">
+        <h1>The Wall</h1>
+        <div class = "bannerText">Welcome {{session ['name']}}!</div>
+        <form action = '/logout'><button>Logout</button></form>
+      </div>
+      <div class = "mainContainer">
+        <form action = '/postMessage' method = 'POST'>
+        <textarea class ="mainContainerText" name = "message"  rows="10" cols="140"></textarea>
+        <button class = "postButton" type = 'submit'>Post A Message</button>
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <div class ="flashMessage"<p>{{message}}</p></div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+
+      <!-- Create for loop that grabs all messages and displays them -->
+        {% if messagePosts %}
+          {% for messageID in messagePosts %}
+            <div class = "messagePost"><div class ="messageHeader">{{messageID['first_name']}} {{messageID['last_name']}}
+            <div class = "messageDate">Posted On: {{messageID['created_at']}}</div></div>
+            <!-- need to get name by using user_id -->
+            <div class ="messageText">{{messageID['message']}}</div>
+            <!-- need to include comments db in query in order to display comments-->
+              {% for comment in commentPosts %}
+                {% if comment['message_id'] == messageID['id']%}<!--if the message has comments -->
+
+                <div class = "commentContainer"><div class = "commentHeader">{{comment['first_name']}} {{comment['last_name']}}</div>
+                <div class = "commentDate">Posted On: {{comment['created_at']}}</div>
+                <div class = "commentPost">{{comment['comment']}}</div>
+                </div>
+                {% endif %}
+              {% endfor %}
+
+            <form action = '/comment' method = 'POST'>
+              <input type = "hidden" name = "message_id" value = "{{messageID['id']}}">
+            <textarea class ="commentText" name = "comment" rows="6" cols="50"></textarea>
+            <button type = 'submit' class = 'commentButton'> Comment</button>
+            </form>
+
+            </div>
+
+          {% endfor %}
+        {% endif %}
+
+      </div>
+    </div>
+
+  </body>
+</html>

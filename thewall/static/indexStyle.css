@@ -1,0 +1,42 @@
+#wrapper {
+  margin: 0px auto;
+  max-width: 970px;
+}
+
+#loginContainer {
+  margin: 10px 0px 20px 0px;
+  vertical-align: top;
+  background-color: #4B98E8;
+  border-radius: 15px;
+  box-shadow: 10px 10px 5px #888888;
+
+}
+
+#loginContainer h1 {
+  margin: 30px 0px 0px 10px;
+  color: white;
+  display: inline-block;
+  text-shadow: 2px 2px 2px black;
+}
+
+#loginContainer p {
+  margin: 30px 0px 0px 10px;
+  color: white;
+}
+
+#registerButton {
+  margin: 10px 0px 10px 90%;
+  margin-left: 90%;
+
+}
+
+#flashMessage {
+  margin: 10px auto;
+  max-width: 40%;
+  padding: 0px 2px;
+  background-color: red;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 2px black;
+}
